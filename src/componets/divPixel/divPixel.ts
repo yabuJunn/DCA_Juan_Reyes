@@ -41,9 +41,9 @@ class DivPixel extends HTMLElement {
 
         const color: any = this.properties.color
         if (color === "0") {
-            div.classList.add("pixel0")
+            div.style.backgroundColor = "white"
         } else {
-            div.classList.add("pixel1")
+            div.style.backgroundColor = "black"
         }
         
         this.shadowRoot?.appendChild(div)
