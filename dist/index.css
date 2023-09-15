@@ -7,8 +7,15 @@ section {
     margin: 10px;
 }
 
-.section1 {
+.section0 {
     width: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.section1 {
+    width: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,41 +29,34 @@ section {
 }
 
 .section3 {
-    width: 50px;
+    width: 80px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .section4 {
-    width: 80px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.section5 {
     width: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.section6 {
+.section5 {
     width: 90px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.section7 {
+.section6 {
     width: 80px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.section8 {
+.section7 {
     width: 90px;
     display: flex;
     flex-direction: row;

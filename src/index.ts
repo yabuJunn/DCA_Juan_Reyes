@@ -17,50 +17,35 @@ class AppContainer extends HTMLElement{
         link.setAttribute("href", "/dist/index.css")
         this.shadowRoot?.appendChild(link)
 
-        const section1 = this.ownerDocument.createElement("section")
-        section1.classList.add("section1")
-        this.shadowRoot?.appendChild(section1)
-        const section2 = this.ownerDocument.createElement("section")
-        section2.classList.add("section2")
-        this.shadowRoot?.appendChild(section2)
-        const section3 = this.ownerDocument.createElement("section")
-        section3.classList.add("section3")
-        this.shadowRoot?.appendChild(section3)
-        const section4 = this.ownerDocument.createElement("section")
-        section4.classList.add("section4")
-        this.shadowRoot?.appendChild(section4)
-        const section5 = this.ownerDocument.createElement("section")
-        section5.classList.add("section5")
-        this.shadowRoot?.appendChild(section5)
-        const section6 = this.ownerDocument.createElement("section")
-        section6.classList.add("section6")
-        this.shadowRoot?.appendChild(section6)
-        const section7 = this.ownerDocument.createElement("section")
-        section7.classList.add("section7")
-        this.shadowRoot?.appendChild(section7)
-        const section8 = this.ownerDocument.createElement("section")
-        section8.classList.add("section8")
-        this.shadowRoot?.appendChild(section8)
-
-        this.CreatePixels(data.images[0], section1)
-        this.CreatePixels(data.images[1], section2)
-        this.CreatePixels(data.images[2], section3)
-        this.CreatePixels(data.images[3], section4)
-        this.CreatePixels(data.images[4], section5)
-        this.CreatePixels(data.images[5], section6)
-        this.CreatePixels(data.images[6], section7)
-        this.CreatePixels(data.images[7], section8)
-        
+        this.createSections(data)
     }
 
-    CreatePixels(data: any, section: any) {
-        console.log("Entro a prueba")
+    createSections(data: any) {
+        const sectionList = []
+
+        for (let i = 0; i < 9; i++) {
+            const section = this.ownerDocument.createElement("section")
+            section.classList.add(`section${i}`)
+            sectionList.push(section)
+            this.shadowRoot?.appendChild(section)
+        }
+
+        this.createPixels(data.images[0], sectionList[0])
+        this.createPixels(data.images[1], sectionList[1])
+        this.createPixels(data.images[2], sectionList[2])
+        this.createPixels(data.images[3], sectionList[3])
+        this.createPixels(data.images[4], sectionList[4])
+        this.createPixels(data.images[5], sectionList[5])
+        this.createPixels(data.images[6], sectionList[6])
+        this.createPixels(data.images[7], sectionList[7])
+    }
+
+    createPixels(data: any, section: any) {
         const imageArray: Array<number> = []
         data.map((list: Array<number>) => {
-            list.map( (pixel)=> {
+                list.map( (pixel)=> {
                 imageArray.push(pixel)
             })
-            
         })
         
         imageArray.map( (pixel: any) => {
@@ -68,140 +53,8 @@ class AppContainer extends HTMLElement{
             div.setAttribute("color", pixel)
             section.appendChild(div)
         })
-        console.log(section)
     }
 
 }
 
 customElements.define("app-container", AppContainer)
-
-// render() {
-//     const link = this.ownerDocument.createElement("link")
-//     link.setAttribute("rel", "stylesheet")
-//     link.setAttribute("href", "/dist/index.css")
-//     this.shadowRoot?.appendChild(link)
-
-//     const firstImage: Array<number> = []
-//     data.images[0].map((list) => {
-//         list.map((pixel)=> {
-//             firstImage.push(pixel)
-//         })
-//     })
-
-//     const secondImage: Array<number> = []
-//     data.images[1].map((list) => {
-//         list.map((pixel)=> {
-//             secondImage.push(pixel)
-//         })
-//     })
-
-//     const thirdImage: Array<number> = []
-//     data.images[2].map((list) => {
-//         list.map((pixel)=> {
-//             thirdImage.push(pixel)
-//         })
-//     })
-
-//     const fourthImage: Array<number> = []
-//     data.images[3].map((list) => {
-//         list.map((pixel)=> {
-//             fourthImage.push(pixel)
-//         })
-//     })
-
-//     const fifthImage: Array<number> = []
-//     data.images[4].map((list) => {
-//         list.map((pixel)=> {
-//             fifthImage.push(pixel)
-//         })
-//     })
-
-//     const sixthImage: Array<number> = []
-//     data.images[5].map((list) => {
-//         list.map((pixel)=> {
-//             sixthImage.push(pixel)
-//         })
-//     })
-
-//     const seventhImage: Array<number> = []
-//     data.images[6].map((list) => {
-//         list.map((pixel)=> {
-//             seventhImage.push(pixel)
-//         })
-//     })
-
-//     const eighthImage: Array<number> = []
-//     data.images[7].map((list) => {
-//         list.map((pixel)=> {
-//             eighthImage.push(pixel)
-//         })
-//     })
-
-//     const section1 = this.ownerDocument.createElement("section")
-//     section1.classList.add("section1")
-//     const section2 = this.ownerDocument.createElement("section")
-//     section2.classList.add("section2")
-//     const section3 = this.ownerDocument.createElement("section")
-//     section3.classList.add("section3")
-//     const section4 = this.ownerDocument.createElement("section")
-//     section4.classList.add("section4")
-//     const section5 = this.ownerDocument.createElement("section")
-//     section5.classList.add("section5")
-//     const section6 = this.ownerDocument.createElement("section")
-//     section6.classList.add("section6")
-//     const section7 = this.ownerDocument.createElement("section")
-//     section7.classList.add("section7")
-//     const section8 = this.ownerDocument.createElement("section")
-//     section8.classList.add("section8")
-    
-
-//     firstImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section1.appendChild(div)
-//     })
-//     secondImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section2.appendChild(div)
-//     })
-//     thirdImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section3.appendChild(div)
-//     })
-//     fourthImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section4.appendChild(div)
-//     })
-//     fifthImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section5.appendChild(div)
-//     })
-//     sixthImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section6.appendChild(div)
-//     })
-//     seventhImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section7.appendChild(div)
-//     })
-//     eighthImage.map( (pixel: any) => {
-//         const div = this.ownerDocument.createElement("div-pixel")
-//         div.setAttribute("color", pixel)
-//         section8.appendChild(div)
-//     })
-
-//     this.shadowRoot?.appendChild(section1)
-//     this.shadowRoot?.appendChild(section2)
-//     this.shadowRoot?.appendChild(section3)
-//     this.shadowRoot?.appendChild(section4)
-//     this.shadowRoot?.appendChild(section5)
-//     this.shadowRoot?.appendChild(section6)
-//     this.shadowRoot?.appendChild(section7)
-//     this.shadowRoot?.appendChild(section8)
-// }
