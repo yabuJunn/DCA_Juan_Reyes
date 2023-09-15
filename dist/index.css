@@ -3,6 +3,12 @@ body {
     height: 1vh;
 }
 
+.bigImage{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 section {
     margin: 10px;
 }
